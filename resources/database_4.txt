@@ -1,20 +1,20 @@
-Beer, Vacuum, Smartphone, Watch
-Headphones, Playstation, Television
-Watch, Smartphone, Headphones, Television
-Tablet, Vacuum, Beer
-Watch, Tablet
-Smartphone, Beer, Vacuum
-Tablet, Television, Playstation, Headphones, Beer, Vacuum
-Beer, Vacuum, Watch
-Headphones, Smartphone, Watch
-Television, Playstation, Headphones
-Watch, Beer
-Watch, Vacuum, Beer, Playstation, Television
-Television, Playstation, Beer, Vacuum
-Watch, Tablet, Wallet
-Fan, Headphones, Tablet
-Television, Beer, Vacuum
-Watch, Fan, Wallet, Tablet
-Television, Tablet, Playstation, Headphones
-Headphones, Beer
-Vacuum, Tablet, Watch, Playstation, Television
+Beer,Vacuum,Smartphone,Watch
+Headphones,Playstation,Television
+Watch,Smartphone,Headphones,Television
+Tablet,Vacuum,Beer
+Watch,Tablet
+Smartphone,Beer,Vacuum
+Tablet,Television,Playstation,Headphones,Beer,Vacuum
+Beer,Vacuum,Watch
+Headphones,Smartphone,Watch
+Television,Playstation,Headphones
+Watch,Beer
+Watch,Vacuum,Beer,Playstation,Television
+Television,Playstation,Beer,Vacuum
+Watch,Tablet,Wallet
+Fan,Headphones,Tablet
+Television,Beer,Vacuum
+Watch,Fan,Wallet,Tablet
+Television,Tablet,Playstation,Headphones
+Headphones,Beer
+Vacuum,Tablet,Watch,Playstation,Television
