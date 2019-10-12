@@ -6,11 +6,18 @@ import java.util.*;
 
 public class Apriori{
 
+    public final List<String> definedOrder = Arrays.asList("Headphones","Tablet", "Watch", "Playstation", "Smartphone",
+            "Television","Beer","Vacuum","Wallet","Fan");
+
     public static void main(String[] args) throws Exception{
 
         String file = new String("/Users/gegb1994/Documents/workspace/Apriori-Algorithm/resources/database_5.txt");
 
-        int support = 4;
+        int support = 5;
+
+//        String test = "Gabriel,Eduardo,Gonzalez";
+//        String[] test2 = splitAfterNthComma(test,2);
+//        System.out.println(test2[0] + " " + test2[1]);
 
         //items read from file
         List<String> items = readFileInList(file);
@@ -32,7 +39,7 @@ public class Apriori{
             nonFrequent = removeNonFrequentItemSets(frequentItemSets, support);
             frequentItemSets.keySet().removeAll(nonFrequent);
             frequentItemSets.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
-
+            List<String> newCandidates = generateCandidates(new ArrayList<>(frequentItemSets.keySet()), 3);
 
 //        }
 
@@ -87,9 +94,44 @@ public class Apriori{
         }
         else{
 
+            for(int i=0; i<items.size(); i++){
+                String[] first = splitAfterNthComma(items.get(i), candidateSize-2);
+                Arrays.sort(first);
+                System.out.println(first[0] + " " + first[1]);
+                for(int j=i+1; j<items.size(); j++){
+                    String[] second = splitAfterNthComma(items.get(j), candidateSize-2);
+                    Arrays.sort(second);
+                    System.out.println(second[0] + " " + second[1]);
+                    if(first[0].equalsIgnoreCase(second[0])){
+                        System.out.println(first[0] + "," + first[1] + "," + second[1]);
+                    }
+
+                }
+            }
 
         }
         return candidates;
+
+    }
+
+
+
+    public static String[] splitAfterNthComma(String st, int n){
+
+        String[] array = st.split(",");
+        StringBuffer sb = new StringBuffer();
+        for(int i=0; i<n; i++) {
+            sb.append(array[i]);
+            if(i != n-1)
+                sb.append(",");
+
+        }
+        String[] arrayToReturn = new String[2];
+        arrayToReturn[0] = sb.toString();
+        arrayToReturn[1] = array[array.length-1];
+
+        return arrayToReturn;
+
 
     }
 
