@@ -12,15 +12,42 @@ public class Apriori{
 
     public static void main(String[] args) throws Exception{
 
-        String file = new String("/Users/gegb1994/Documents/workspace/Apriori-Algorithm/resources/database_1.txt");
+        String file = new String("C:\\Users\\gegb1\\IdeaProjects\\Apriori-Algorithm\\resources\\database_1.txt");
+
+        //items read from file
         List<String> items = readFileInList(file);
-        Map<String, Integer> itemset = generateAllFrequentItemSets(items, 4);
-        itemset.entrySet().stream()
-                .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+        //items after first iteration
+
+        Map<String, Integer> itemset = generateAllFrequentItemSets(items);
+        Set<String> nonFrequent = removeNonFrequentItemSets(itemset, 4);
+        itemset.keySet().removeAll(nonFrequent);
+        itemset.entrySet().stream().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+        while(itemset.size() > 1){
+
+
+
+
+        }
+    }
+
+    public static List<String> generateAllCombinations(List<String> items, int itemsPerCombination){
+
+
 
     }
 
-    public static Map<String, Integer> generateAllFrequentItemSets(List<String> items, int support) throws Exception{
+    public static Set<String> removeNonFrequentItemSets(Map<String,Integer> itemset, int support){
+
+        Set<String> itemsToReturn = new HashSet<>();
+        for(Map.Entry<String, Integer> entry : itemset.entrySet()){
+            if(entry.getValue().compareTo(support) < 0){
+                itemsToReturn.add(entry.getKey());
+            }
+        }
+        return itemsToReturn;
+    }
+
+    public static Map<String, Integer> generateAllFrequentItemSets(List<String> items) throws Exception{
 
         Map<String, Integer> itemsMap = new HashMap<>();
         for(String st : items){
@@ -34,8 +61,6 @@ public class Apriori{
                 }
             }
         }
-
-        itemsMap.entrySet().removeIf(entry -> entry.getValue().compareTo(support) < 0);
 
         return itemsMap;
     }
