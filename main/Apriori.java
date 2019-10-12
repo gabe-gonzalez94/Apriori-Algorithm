@@ -22,17 +22,31 @@ public class Apriori{
         Set<String> nonFrequent = removeNonFrequentItemSets(itemset, 4);
         itemset.keySet().removeAll(nonFrequent);
         itemset.entrySet().stream().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
-        while(itemset.size() > 1){
-
-
-
-
-        }
+        List<String> candidates = generateCandidates(new ArrayList<>(itemset.keySet()), 2);
+//        while(itemset.size() > 1){
+//        }
     }
 
-    public static List<String> generateAllCombinations(List<String> items, int itemsPerCombination){
+    public static List<String> generateCandidates(List<String> items, int candidateSize){
 
+        List<String> candidates = new ArrayList<>();
+        if(candidateSize == 2) {
+            for (int i=0; i<items.size(); i++){
+                String itemToCombine = items.get(i);
+                for(int j=1; j<items.size(); j++){
+                    if(itemToCombine.equalsIgnoreCase(items.get(j)))
+                        break;
+                    StringBuffer sb = new StringBuffer();
+                    sb.append(itemToCombine);
+                    sb.append(",");
+                    sb.append(items.get(j));
+                    candidates.add(sb.toString());
+                }
 
+            }
+
+        }
+        return candidates;
 
     }
 
